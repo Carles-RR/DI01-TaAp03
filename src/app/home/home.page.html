@@ -1,20 +1,42 @@
+<!--
+  TAREA TA03 – HomePage
+  Implementa los TODOs siguiendo los apartados indicados en la teoría.
+-->
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+       Mi Aplicación
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-item>
+    <ion-input [(ngModel)]="busqueda" placeholder="Buscar elemento..."></ion-input>
+  </ion-item>
+
+  <ion-list>
+    @for (elemento of elementosFiltrados; track elemento.id) {
+      <!--TODO: Añadir llamada al método verDetalle-->
+      <ion-item button="true">
+        <ion-label>
+          <h2>{{ elemento.nombre }}</h2>
+          <p>{{ elemento.descripcion }}</p>
+        </ion-label>
+      </ion-item>
+    }
+  </ion-list>
+
+  <ion-button expand="block" [disabled]="!hayElementos" (click)="mostrarToast()">
+    Mostrar mensaje
+  </ion-button>
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Footer Tarea TA01 - Angular + Ionic</ion-title>
+  </ion-toolbar>
+</ion-footer>
