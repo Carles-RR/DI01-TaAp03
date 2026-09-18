@@ -1,4 +1,5 @@
 //TODO - importar Router de @angular/router
+import { Router } from '@angular/router'; 
 import { Component, inject } from '@angular/core';
 import {
   IonHeader, IonToolbar, IonTitle, IonContent, IonFooter,
@@ -44,7 +45,8 @@ export class HomePage {
   }
 
   // TODO Injectar Router
-
+  private router = inject(Router);
+  
   private toastController = inject(ToastController);
 
   constructor() {};
@@ -52,9 +54,9 @@ export class HomePage {
   // TODO (Apartado 2 – Navegación): 
   // Desarrollar el método verDetalle que recibirá un Elemento como parámetro
   // Navegar a /detalle con el elemento seleccionado
-  verDetalle(): void {
+  verDetalle(elemento: Elemento): void {
     // Pista: this.router.navigate mediante state
-    
+    this.router.navigate(['/detalle'], { state: { elemento } });
   }
 
   // TODO (Apartado 1 + 3 – Event Binding): Mostrar un ion-toast al pulsar el botón
